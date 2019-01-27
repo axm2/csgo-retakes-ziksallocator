@@ -14,7 +14,7 @@ Handle g_CVHeadshotOnly = INVALID_HANDLE;
 
 Handle g_CVWinsUntilForce = INVALID_HANDLE;
 
-Handle c_CVPistolNum = INVALID_HANDLE;
+Handle g_CVPistolNum = INVALID_HANDLE;
 
 /**
  * Pistol round start money.
