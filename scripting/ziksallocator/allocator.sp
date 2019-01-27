@@ -1,4 +1,4 @@
-int g_SinceLastPistol = 99;
+int g_PistolRoundsNum = 0;
 
 /**
  * Chooses a loadout type for the next round.
@@ -12,13 +12,12 @@ RTLoadout GetLoadout()
         return LOADOUT_RANDOM;
     }
 
-    if ( GetWinStreak() == 0 && g_SinceLastPistol >= 5 || GetIsPistolRoundOnly() )
+    if ( g_PistolRoundsNum<= GetPistolNum() || GetIsPistolRoundOnly() )
     {
-        g_SinceLastPistol = 0;
+        ++g_PistolRoundsNum;
         return LOADOUT_PISTOL;
     }
 
-    ++g_SinceLastPistol;
     return LOADOUT_FULL;
 }
 

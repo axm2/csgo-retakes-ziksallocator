@@ -14,6 +14,8 @@ Handle g_CVHeadshotOnly = INVALID_HANDLE;
 
 Handle g_CVWinsUntilForce = INVALID_HANDLE;
 
+Handle c_CVPistolNum = INVALID_HANDLE;
+
 /**
  * Pistol round start money.
  */
@@ -62,18 +64,20 @@ void SetupConVars()
 {
     g_CVMenuTimeSeconds = CreateConVar( "sm_retakes_menu_time", "15", "Time in seconds that menus should remain open for before automatically closing.", FCVAR_NOTIFY );
 
-    g_CVRandomProbability = CreateConVar( "sm_retakes_random_chance", "5", "Percentage chance of a random weapon round", FCVAR_NOTIFY );
+    g_CVRandomProbability = CreateConVar( "sm_retakes_random_chance", "0", "Percentage chance of a random weapon round", FCVAR_NOTIFY );
     g_CVPistolOnly = CreateConVar( "sm_retakes_pistol_only", "0", "Enable pistol round only mode", FCVAR_NOTIFY );
     g_CVHeadshotOnly = CreateConVar( "sm_retakes_headshot_only", "0", "Enable headshot only mode", FCVAR_NOTIFY );
-    g_CVWinsUntilForce = CreateConVar( "sm_retakes_wins_until_force", "3", "Win streak until T force buys", FCVAR_NOTIFY );
+    g_CVWinsUntilForce = CreateConVar( "sm_retakes_wins_until_force", "7", "Win streak until T force buys", FCVAR_NOTIFY );
 
     g_CVPistolStartMoney = CreateConVar( "sm_retakes_pistol_startmoney", "800", "Pistol round start money", FCVAR_NOTIFY );
     g_CVFullStartMoney = CreateConVar( "sm_retakes_fullbuy_startmoney", "16000", "Normal round start money", FCVAR_NOTIFY );
 
     g_CVMaxGrenadeValue = CreateConVar( "sm_retakes_grenade_maxvalue", "800", "Maximum total value of randomly allocated grenades", FCVAR_NOTIFY );
-    g_CVDecoyProbability = CreateConVar( "sm_retakes_decoy_chance", "10", "Percentage chance of decoys being considered for random grenade allocation", FCVAR_NOTIFY );
+    g_CVDecoyProbability = CreateConVar( "sm_retakes_decoy_chance", "0", "Percentage chance of decoys being considered for random grenade allocation", FCVAR_NOTIFY );
 
     g_CVInstantDefuseMargin = CreateConVar( "sm_retakes_instdefuse_margin", "1.0", "Safety margin in seconds for instant defuse", FCVAR_NOTIFY );
+
+    g_CVPistolNum = CreateConVar ( "sm_retakes_pistol_num", "5", "Number of pistol rounds before full rounds", FCVAR_NOTIFY );
 
     g_CVNadeLimitTotal = FindConVar( "ammo_grenade_limit_total" );
     g_CVNadeLimitDefault = FindConVar( "ammo_grenade_limit_default" );
@@ -121,6 +125,11 @@ int GetWinsUntilScramble()
 {
     // TODO
     return 10;
+}
+
+int GetPistolNum()
+{
+    return GetConVarInt ( g_CVPistolNum );
 }
 
 /**
