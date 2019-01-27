@@ -77,7 +77,7 @@ void SetupConVars()
 
     g_CVInstantDefuseMargin = CreateConVar( "sm_retakes_instdefuse_margin", "1.0", "Safety margin in seconds for instant defuse", FCVAR_NOTIFY );
 
-    g_CVPistolNum = CreateConVar ( "sm_retakes_pistol_num", "5", "Number of pistol rounds before full rounds", FCVAR_NOTIFY );
+    g_CVPistolNum = CreateConVar( "sm_retakes_pistol_num", "5", "Number of pistol rounds before full rounds", FCVAR_NOTIFY );
 
     g_CVNadeLimitTotal = FindConVar( "ammo_grenade_limit_total" );
     g_CVNadeLimitDefault = FindConVar( "ammo_grenade_limit_default" );
@@ -129,7 +129,7 @@ int GetWinsUntilScramble()
 
 int GetPistolNum()
 {
-    return GetConVarInt ( g_CVPistolNum );
+    return GetConVarInt( g_CVPistolNum );
 }
 
 /**
